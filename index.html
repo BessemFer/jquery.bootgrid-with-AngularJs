@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS bootgrid</title>
+
+    <link rel="stylesheet" href="bower_components/jquery.bootgrid/dist/jquery.bootgrid.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+
+    <!-- jquery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- /jquery -->
+    <!-- angular -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <!-- /angular -->
+    <!-- bootgrid -->
+    <script src="bower_components/jquery.bootgrid/dist/jquery.bootgrid.js"></script>
+
+    <script src="bower_components/jquery.bootgrid/dist/jquery.bootgrid.fa.js"></script>
+    <!-- /bootgrid -->
+    <!-- bootstrap -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- /bootstrap -->
+
+    <script src="app.js"></script>
+</head>
+
+<body>
+<div class="">
+<section ng-app="app">
+    <div class="container-fluid">
+        <p></p>
+        <button id="append" type="button" class="btn btn-default">Append</button>
+        <button id="clear" type="button" class="btn btn-default">Clear</button>
+        <button id="destroy" type="button" class="btn btn-default">Destroy</button>
+        <button id="clearSearch" type="button" class="btn btn-default">Clear Search</button>
+        <button id="clearSort" type="button" class="btn btn-default">Clear Sort</button>
+        <button id="getCurrentPage" type="button" class="btn btn-default">Current Page Index</button>
+        <button id="getRowCount" type="button" class="btn btn-default">Row Count</button>
+        <button id="getTotalRowCount" type="button" class="btn btn-default">Total Row Count</button>
+        <button id="getTotalPageCount" type="button" class="btn btn-default">Total Page Count</button>
+        <button id="getSearchPhrase" type="button" class="btn btn-default">Search Phrase</button>
+        <button id="getSortDictionary" type="button" class="btn btn-default">Sort Dictionary</button>
+        <p></p>
+
+    </div>
+    <div class="table-responsive container-fluid" ng-controller="datatableCtrl">
+
+
+        <table class="table table-condensed table-hover table-striped  " data-selection="true" data-multi-select="true" data-row-select="true" data-keep-selection="true"     bootgrid="datalist">
+            <thead  class="thead-inverse">
+            <tr>
+                <th ng-repeat="c in title" data-column-id="{{c.name}}">
+
+                    {{c.name}}
+
+                </th>
+            </tr>
+            <!-- <tr>
+                 <th data-column-id="id">ID</th>
+                 <th data-column-id="sender">Sender</th>
+                 <th data-column-id="received" data-order="desc">Received</th>
+             </tr>-->
+            </thead>
+            <tbody>
+            <tr ng-repeat="w in datalist">
+               <td ng-repeat="k in title">
+                   <span ng-if="k.key == 'id'">
+                       <a href="">{{w[k.key]}}</a>
+                   </span>
+                   <span ng-if="k.key !== 'id'">
+                       {{w[k.key]}}
+                   </span>
+               </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</div>
+</body>
+
+</html>
